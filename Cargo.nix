@@ -1374,8 +1374,15 @@ rec {
       };
       "lava-outcome-chain" = rec {
         crateName = "lava-outcome-chain";
-        version = "0.1.1";
+        version = "0.1.2";
         edition = "2024";
+        crateBin = [
+          {
+            name = "lava-outcome-chain-keygen";
+            path = "src/bin/keygen.rs";
+            requiredFeatures = [ ];
+          }
+        ];
         src = lib.cleanSourceWith { filter = sourceFilter;  src = ./.; };
         libName = "lava_outcome_chain";
         authors = [
