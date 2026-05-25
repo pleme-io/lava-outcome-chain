@@ -12,6 +12,10 @@ version = "0.1.1"
 name = "lava_outcome_chain"
 path = "src/lib.rs"
 
+[[bin]]
+name = "lava-outcome-chain-keygen"
+path = "src/bin/keygen.rs"
+
 [lints.clippy]
 pedantic = "warn"
 

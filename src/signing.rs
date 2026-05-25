@@ -121,6 +121,16 @@ impl Ed25519Signer {
     pub fn verifying_key(&self) -> VerifyingKey {
         self.key.verifying_key()
     }
+
+    /// Raw 32-byte secret seed. Returned by VALUE (the inner
+    /// SigningKey owns its bytes); the caller is responsible for
+    /// zeroizing if the typed-secret discipline is required.
+    /// Used by operator-side keygen tooling that needs to emit the
+    /// SECRET half of a keypair for SOPS encryption.
+    #[must_use]
+    pub fn secret_bytes(&self) -> [u8; SECRET_KEY_LENGTH] {
+        self.key.to_bytes()
+    }
 }
 
 impl std::fmt::Debug for Ed25519Signer {
