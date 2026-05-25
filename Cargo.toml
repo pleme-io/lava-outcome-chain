@@ -1,0 +1,30 @@
+[package]
+authors = ["pleme-io"]
+description = "lava-outcome-chain — typed BLAKE3-linked OutcomeChain<P: Payload> primitive for IaC reconcile-tick attestation. Each receipt links to the previous via prev_hash; the OutcomeSink trait abstracts persistence (InMemory / Filesystem / Object-Store); the SigningProvider trait abstracts attestation (NoSigning / Ed25519). Generic over the Payload type — first consumer is lava-operator's per-reconcile OutcomeReceipt; AnomalyChain + PromessaChain become typed specializations once the third-use abstraction emerges."
+edition = "2024"
+license = "MIT"
+name = "lava-outcome-chain"
+readme = "README.md"
+repository = "https://github.com/pleme-io/lava-outcome-chain"
+version = "0.1.0"
+
+[lib]
+name = "lava_outcome_chain"
+path = "src/lib.rs"
+
+[lints.clippy]
+pedantic = "warn"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+chrono = { version = "0.4", features = ["serde"] }
+blake3 = "1"
+ed25519-dalek = { version = "2", features = ["rand_core"] }
+rand = "0.8"
+hex = "0.4"
+thiserror = "2"
+indexmap = { version = "2", features = ["serde"] }
+
+[dev-dependencies]
+tempfile = "3"
